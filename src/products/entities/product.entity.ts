@@ -43,6 +43,7 @@ export class Product {
     //images
 
     @BeforeInsert()
+    @BeforeUpdate()
     checkSlugsInsert() {
         if (!this.slug) {
             this.slug = this.title;
@@ -54,6 +55,5 @@ export class Product {
             .replaceAll("'", '')
     }
 
-    // @BeforeUpdate()
 
 }
