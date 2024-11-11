@@ -70,8 +70,14 @@ export class AuthService {
 
   private getJwtToken( payload: JwtPayload) {
     // 
-    const token = this.jwtService.sign( payload);
-    return token;
+    try {
+      const token = this.jwtService.sign( payload);
+      console.log(token)
+      return token;
+      
+    } catch (error) {
+      this.handleDBErrors(error);
+    }
   }
 
   private handleDBErrors(error: any): never {

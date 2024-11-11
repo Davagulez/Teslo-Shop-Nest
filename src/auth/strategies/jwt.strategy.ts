@@ -3,10 +3,10 @@ import { Repository } from "typeorm";
 import { PassportStrategy } from "@nestjs/passport";
 import { InjectRepository } from "@nestjs/typeorm";
 import { ConfigService } from "@nestjs/config";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 
 import { User } from "../entities/user.entity";
 import { JwtPayload } from "../interfaces/jwt.interface";
-import { Injectable, UnauthorizedException } from "@nestjs/common";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy( Strategy ) {
@@ -38,7 +38,7 @@ export class JwtStrategy extends PassportStrategy( Strategy ) {
         }
 
 
-        return ;
+        return user;
     } 
 
 }
